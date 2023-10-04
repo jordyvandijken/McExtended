@@ -186,20 +186,23 @@ public class Util {
         BlockData data = block.getBlockData();
 
         // Check if the block data is directional
-        if (data instanceof Directional) {
-            Directional directional = (Directional) data;
+        if (block.getBlockData() instanceof Directional) {
             BlockFace currentFace = getBlockFace(block);
 
             block.setType(material);
+            Directional directional = (Directional) block.getBlockData();
 
             // Set the facing direction
             if (currentFace != null) directional.setFacing(currentFace);
             block.setBlockData(directional);
-        } else if (data instanceof Orientable) {
-            Orientable orientation = (Orientable) data;
-            Axis currentAxis = orientation.getAxis();
+
+            //ExtendedCore.Instance().getLogger().info("replaced - directional data set: " + material);
+
+        } else if (block.getBlockData() instanceof Orientable) {
+            Axis currentAxis = ((Orientable) block.getBlockData()).getAxis();
 
             block.setType(material);
+            Orientable orientation = (Orientable) block.getBlockData();;
 
             // Set the orientation
             orientation.setAxis(currentAxis);
