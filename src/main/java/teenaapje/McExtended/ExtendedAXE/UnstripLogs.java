@@ -1,6 +1,7 @@
 package teenaapje.McExtended.ExtendedAXE;
 
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -50,15 +51,15 @@ public class UnstripLogs implements Listener {
         Player player = event.getPlayer();
         if (!MaterialLists.Tools.axes.contains(player.getInventory().getItemInMainHand().getType())) return;
 
-        Block clickedBlock = event.getClickedBlock();
+        Block block = event.getClickedBlock();
 
-        assert clickedBlock != null;
-        Material type = clickedBlock.getType();
+        assert block != null;
+        Material type = block.getType();
 
         if (Util.dictKeyContains(strippedBlocks, type)) {
-            Util.replaceBlock(clickedBlock, strippedBlocks.get(type));
+            Util.replaceBlock(block, strippedBlocks.get(type));
+
+            block.getWorld().playSound(block.getLocation(), Sound.ITEM_AXE_STRIP, 1.0f, 1.0f);
         }
-        // no sounds
-        // maybe wrong block data
     }
 }
