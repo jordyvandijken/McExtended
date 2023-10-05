@@ -37,7 +37,7 @@ public class Util {
             // If it does, reduce the amount of damage by the enchantment level
             int unbreakingLevel = item.getEnchantmentLevel(Enchantment.DURABILITY);
             float unbreakChance = 100f / (unbreakingLevel + 1);
-            if (Util.randomInt(1, 100) < unbreakChance) return item; // Within break chance
+            if (Util.randomInt(1, 100) > unbreakChance) return item; // Within break chance
         }
 
         int damage = dMeta.getDamage();
