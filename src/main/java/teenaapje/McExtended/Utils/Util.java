@@ -20,11 +20,6 @@ import java.util.Enumeration;
 
 public class Util {
 
-    /**
-     * Returns blockface of block
-     * @param block
-     * @return BlockFace
-     */
     public static BlockFace getBlockFace(Block block) {
         BlockData blockData = block.getBlockData();
         if (blockData instanceof Directional) {
@@ -34,12 +29,6 @@ public class Util {
         return null;
     }
 
-    /**
-     * Reduces Durabilty of an item
-     * @param item
-     * @param amountDamage
-     * @return
-     */
     public static ItemStack reduceDurability(ItemStack item, int amountDamage) {
         org.bukkit.inventory.meta.Damageable dMeta = (org.bukkit.inventory.meta.Damageable) item.getItemMeta();
 
@@ -57,13 +46,6 @@ public class Util {
         return item;
     }
 
-
-    /**
-     * Give a random int with the give params
-     * @param min
-     * @param max
-     * @return
-     */
     public static int randomInt (int min, int max) {
         return (int)Math.floor(Math.random() * (max - min + 1) + min);
     }
@@ -71,13 +53,6 @@ public class Util {
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
-
-    /**
-     * Checks if material is in Dictionary
-     * @param dictionary
-     * @param material
-     * @return
-     */
     public static boolean dictKeyContains(Dictionary<Material, ?> dictionary, Material material) {
         Enumeration<Material> values = dictionary.keys();
         while (values.hasMoreElements()) {
@@ -88,13 +63,6 @@ public class Util {
         return false;
     }
 
-
-    /**
-     * Add value to compost level
-     * @param block
-     * @param value
-     * @param playSound
-     */
     public static void increaseCompostLevel (Block block, int value, boolean playSound) {
         BlockState blockState = block.getState();
         BlockData blockData = block.getBlockData();
@@ -105,15 +73,11 @@ public class Util {
         blockState.setBlockData(blockData);
         blockState.update();
 
-        block.getWorld().playSound(block.getLocation(), Sound.BLOCK_COMPOSTER_FILL_SUCCESS, 1.0f, 1.0f);
+        if (playSound) {
+            block.getWorld().playSound(block.getLocation(), Sound.BLOCK_COMPOSTER_FILL_SUCCESS, 1.0f, 1.0f);
+        }
     }
 
-    /**
-     * Get BlockFace depending on where the player is
-     * @param player
-     * @param block
-     * @return
-     */
     public static BlockFace getPlayerBlockFace(Player player, Block block) {
         // Get the player's location
         Location playerLocation = player.getLocation();
@@ -182,9 +146,6 @@ public class Util {
     }
     
     public static void replaceBlock(Block block, Material material) {
-        // Get the block data
-        BlockData data = block.getBlockData();
-
         // Check if the block data is directional
         if (block.getBlockData() instanceof Directional) {
             BlockFace currentFace = getBlockFace(block);
@@ -202,13 +163,16 @@ public class Util {
             Axis currentAxis = ((Orientable) block.getBlockData()).getAxis();
 
             block.setType(material);
-            Orientable orientation = (Orientable) block.getBlockData();;
+            Orientable orientation = (Orientable) block.getBlockData();
 
             // Set the orientation
             orientation.setAxis(currentAxis);
             block.setBlockData(orientation);
+            //ExtendedCore.Instance().getLogger().info("replaced - orientation data set: " + material);
+
         } else {
             block.setType(material);
+            //ExtendedCore.Instance().getLogger().info("replaced - no data set: " + material);
         }
     }
 

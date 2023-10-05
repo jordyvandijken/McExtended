@@ -2,9 +2,6 @@ package teenaapje.McExtended.ExtendedAXE;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
-import org.bukkit.block.BlockState;
-import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,13 +10,11 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import teenaapje.McExtended.Utils.MaterialLists;
 import teenaapje.McExtended.Utils.Util;
 
-import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Hashtable;
-import java.util.List;
 
 public class UnstripLogs implements Listener {
-    // No one like striping logs be axcedent
+    // No one like striping logs be accident
     Dictionary<Material, Material> strippedBlocks = new Hashtable<>();
 
     public UnstripLogs () {
