@@ -16,5 +16,6 @@ A plugin to enhance the Minecraft experience while staying faithful to the origi
 - Autoplay music discs into a jukebox, using hoppers to insert them and take them out when done.
 - Extend loottable that gives some animals a chance to drop bones, such as cows, pigs, sheep, etc.
 - Auto open double doors on interaction (shift to open single)
+- Inventory sorting 
 
 ## To find the Item that the auto replant and/or dispensers work with check the list in MaterialLists to find the items it works with

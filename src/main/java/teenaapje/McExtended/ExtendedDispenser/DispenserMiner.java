@@ -39,10 +39,14 @@ public class DispenserMiner implements Listener {
 
         if (!mineBlockInFacingDirection(dispenser, tool)) return;
 
+        updateInventory(dispenser, tool);
+    }
+
+    public void updateInventory (Dispenser dispenser, ItemStack tool) {
         int index = Util.findFirstNullIndex(dispenser.getInventory().getContents());
         if (index < 0) return;
 
-        ItemStack[] newList = Util.setItemInItemStack(dispenser.getSnapshotInventory().getContents(), Util.reduceDurability(tool.clone(), 2), index);
+        ItemStack[] newList = Util.setItemInItemStack(dispenser.getSnapshotInventory().getContents(), Util.reduceDurability(tool.clone(), 1, true), index);
 
         dispenser.getSnapshotInventory().setContents(newList);
 

@@ -51,7 +51,7 @@ public class MoreCompost implements Listener {
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
 
         Block block = event.getClickedBlock();
-        if (block.getType() != Material.COMPOSTER) return;
+        if (block == null || block.getType() != Material.COMPOSTER) return;
 
         Player player = event.getPlayer();
         ItemStack item = player.getInventory().getItemInMainHand();

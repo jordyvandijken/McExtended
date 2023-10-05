@@ -31,8 +31,6 @@ public final class ExtendedCore extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new BlockDebug(), this);
 
-        setupMiners();
-
         // Register Enchants
         CustomEnchants.register();
         getServer().getPluginManager().registerEvents(new CustomEnchantmentListener(CustomEnchants.farmersFeet), this);
@@ -40,10 +38,6 @@ public final class ExtendedCore extends JavaPlugin {
         for (Enchantment enchantment : Enchantment.values()) {
             getServer().getLogger().info(enchantment.getName() + " - " + enchantment.isDiscoverable() + " - " + enchantment);
         }
-    }
-
-    public void setupMiners () {
-
     }
 
     @Override

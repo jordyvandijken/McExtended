@@ -11,6 +11,7 @@ import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.Directional;
 import org.bukkit.block.data.Levelled;
 import org.bukkit.block.data.Orientable;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -29,8 +30,15 @@ public class Util {
         return null;
     }
 
-    public static ItemStack reduceDurability(ItemStack item, int amountDamage) {
+    public static ItemStack reduceDurability(ItemStack item, int amountDamage, boolean useEnchantment) {
         org.bukkit.inventory.meta.Damageable dMeta = (org.bukkit.inventory.meta.Damageable) item.getItemMeta();
+
+        if (useEnchantment && item.getEnchantmentLevel(Enchantment.DURABILITY) > 0) {
+            // If it does, reduce the amount of damage by the enchantment level
+            int unbreakingLevel = item.getEnchantmentLevel(Enchantment.DURABILITY);
+            float unbreakChance = 100f / (unbreakingLevel + 1);
+            if (Util.randomInt(1, 100) < unbreakChance) return item; // Within break chance
+        }
 
         int damage = dMeta.getDamage();
         int maxDamage = item.getType().getMaxDurability();
