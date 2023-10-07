@@ -44,6 +44,7 @@ public class MoreCompost implements Listener {
         compostableItems.put(Material.TROPICAL_FISH, 65);
         compostableItems.put(Material.PUFFERFISH, 65);
         compostableItems.put(Material.SPIDER_EYE, 65);
+        compostableItems.put(Material.BAMBOO, 65);
     }
 
     @EventHandler
