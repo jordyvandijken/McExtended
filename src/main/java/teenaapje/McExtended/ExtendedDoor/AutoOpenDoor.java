@@ -9,6 +9,7 @@ import org.bukkit.block.data.type.Door;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.Vector;
 import teenaapje.McExtended.ExtendedCore;
@@ -17,8 +18,29 @@ import teenaapje.McExtended.Utils.Util;
 public class AutoOpenDoor implements Listener {
 
     @EventHandler
+    public void onPlayerInteract(PlayerInteractEvent event) {
+        if (!event.getAction().isRightClick()) return;
+        if (event.getPlayer().isSneaking()) return; // open single door on sneak
+        if (event.getClickedBlock() == null) return;
+        if (!isDoor(event.getClickedBlock())) return;
+
+        Block doubleDoorBlock = isDoubleDoor(event.getClickedBlock());
+        if (doubleDoorBlock == null) return;
+
+        Door doorData = (Door) event.getClickedBlock().getBlockData();
+        Door ddDoorData = (Door) doubleDoorBlock.getBlockData();
+
+        if (!doorData.isOpen() && !ddDoorData.isOpen()) {
+            openDoor(doubleDoorBlock);
+        } else if (doorData.isOpen() && ddDoorData.isOpen()) {
+            closeDoor(doubleDoorBlock);
+        }
+    }
+
+    @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
+
         Block block = calculateTargetBlock(player);
 
         if (isDoor(block) && isFacingDoor(player, block)) {
@@ -76,6 +98,27 @@ public class AutoOpenDoor implements Listener {
             block.getWorld().playSound(block.getLocation(), Sound.BLOCK_NETHER_WOOD_DOOR_OPEN, 1.0f, 1.0f);
         } else {
             block.getWorld().playSound(block.getLocation(), Sound.BLOCK_WOODEN_DOOR_OPEN, 1.0f, 1.0f);
+        }
+    }
+
+    private void closeDoor(Block block) {
+        Door doorData = (Door) block.getBlockData();
+        doorData.setOpen(false);
+        block.setBlockData(doorData);
+
+        Material type = block.getType();
+        if (Material.IRON_DOOR == type) {
+            block.getWorld().playSound(block.getLocation(), Sound.BLOCK_IRON_DOOR_CLOSE, 1.0f, 1.0f);
+        } else if(Material.BAMBOO_DOOR == type) {
+            block.getWorld().playSound(block.getLocation(), Sound.BLOCK_BAMBOO_WOOD_DOOR_CLOSE, 1.0f, 1.0f);
+        } else if(Material.CHERRY_DOOR == type) {
+            block.getWorld().playSound(block.getLocation(), Sound.BLOCK_CHERRY_WOOD_DOOR_CLOSE, 1.0f, 1.0f);
+        } else if(Material.WARPED_DOOR == type) {
+            block.getWorld().playSound(block.getLocation(), Sound.BLOCK_NETHER_WOOD_DOOR_CLOSE, 1.0f, 1.0f);
+        } else if(Material.CRIMSON_DOOR == type) {
+            block.getWorld().playSound(block.getLocation(), Sound.BLOCK_NETHER_WOOD_DOOR_CLOSE, 1.0f, 1.0f);
+        } else {
+            block.getWorld().playSound(block.getLocation(), Sound.BLOCK_WOODEN_DOOR_CLOSE, 1.0f, 1.0f);
         }
     }
 
