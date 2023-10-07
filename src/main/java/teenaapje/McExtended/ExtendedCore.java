@@ -18,6 +18,7 @@ public final class ExtendedCore extends JavaPlugin {
         _instance = this;
 
         getServer().getPluginManager().registerEvents(new AutoOpenDoor(), this);
+        getServer().getPluginManager().registerEvents(new ExtendedInventory(), this);
 
         getServer().getPluginManager().registerEvents(new FarmingInteraction(), this);
         getServer().getPluginManager().registerEvents(new MoreCompost(), this);
