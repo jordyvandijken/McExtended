@@ -20,28 +20,33 @@ public class UnstripLogs implements Listener {
 
     public UnstripLogs () {
         // The Stripped wood types
-        strippedBlocks.put(Material.STRIPPED_ACACIA_LOG, Material.ACACIA_LOG);
-        strippedBlocks.put(Material.STRIPPED_ACACIA_WOOD, Material.ACACIA_WOOD);
-        strippedBlocks.put(Material.STRIPPED_BAMBOO_BLOCK, Material.BAMBOO_BLOCK);
-        strippedBlocks.put(Material.STRIPPED_BIRCH_LOG, Material.BIRCH_LOG);
-        strippedBlocks.put(Material.STRIPPED_BIRCH_WOOD, Material.BIRCH_WOOD);
-        strippedBlocks.put(Material.STRIPPED_CHERRY_LOG, Material.CHERRY_LOG);
-        strippedBlocks.put(Material.STRIPPED_CHERRY_WOOD, Material.CHERRY_WOOD);
-        strippedBlocks.put(Material.STRIPPED_CRIMSON_HYPHAE, Material.CRIMSON_HYPHAE);
-        strippedBlocks.put(Material.STRIPPED_CRIMSON_STEM, Material.CRIMSON_STEM);
-        strippedBlocks.put(Material.STRIPPED_DARK_OAK_LOG, Material.DARK_OAK_LOG);
-        strippedBlocks.put(Material.STRIPPED_DARK_OAK_WOOD, Material.DARK_OAK_WOOD);
-        strippedBlocks.put(Material.STRIPPED_JUNGLE_LOG, Material.JUNGLE_LOG);
-        strippedBlocks.put(Material.STRIPPED_JUNGLE_WOOD, Material.JUNGLE_WOOD);
-        strippedBlocks.put(Material.STRIPPED_MANGROVE_LOG, Material.MANGROVE_LOG);
-        strippedBlocks.put(Material.STRIPPED_MANGROVE_WOOD, Material.MANGROVE_WOOD);
-        strippedBlocks.put(Material.STRIPPED_OAK_LOG, Material.OAK_LOG);
-        strippedBlocks.put(Material.STRIPPED_OAK_WOOD, Material.OAK_WOOD);
-        strippedBlocks.put(Material.STRIPPED_SPRUCE_LOG, Material.SPRUCE_LOG);
-        strippedBlocks.put(Material.STRIPPED_SPRUCE_WOOD, Material.SPRUCE_WOOD);
-        strippedBlocks.put(Material.STRIPPED_WARPED_HYPHAE, Material.WARPED_HYPHAE);
-        strippedBlocks.put(Material.STRIPPED_WARPED_STEM, Material.WARPED_STEM);
+        addStippableItem(Material.matchMaterial("STRIPPED_ACACIA_LOG")      , Material.matchMaterial("ACACIA_LOG"));
+        addStippableItem(Material.matchMaterial("STRIPPED_ACACIA_WOOD")     , Material.matchMaterial("ACACIA_WOOD"));
+        addStippableItem(Material.matchMaterial("STRIPPED_BAMBOO_BLOCK")    , Material.matchMaterial("BAMBOO_BLOCK"));
+        addStippableItem(Material.matchMaterial("STRIPPED_BIRCH_LOG")       , Material.matchMaterial("BIRCH_LOG"));
+        addStippableItem(Material.matchMaterial("STRIPPED_BIRCH_WOOD")      , Material.matchMaterial("BIRCH_WOOD"));
+        addStippableItem(Material.matchMaterial("STRIPPED_CHERRY_LOG")      , Material.matchMaterial("CHERRY_LOG"));
+        addStippableItem(Material.matchMaterial("STRIPPED_CHERRY_WOOD")     , Material.matchMaterial("CHERRY_WOOD"));
+        addStippableItem(Material.matchMaterial("STRIPPED_CRIMSON_HYPHAE")  , Material.matchMaterial("CRIMSON_HYPHAE"));
+        addStippableItem(Material.matchMaterial("STRIPPED_CRIMSON_STEM")    , Material.matchMaterial("CRIMSON_STEM"));
+        addStippableItem(Material.matchMaterial("STRIPPED_DARK_OAK_LOG")    , Material.matchMaterial("DARK_OAK_LOG"));
+        addStippableItem(Material.matchMaterial("STRIPPED_DARK_OAK_WOOD")   , Material.matchMaterial("DARK_OAK_WOOD"));
+        addStippableItem(Material.matchMaterial("STRIPPED_JUNGLE_LOG")      , Material.matchMaterial("JUNGLE_LOG"));
+        addStippableItem(Material.matchMaterial("STRIPPED_JUNGLE_WOOD")     , Material.matchMaterial("JUNGLE_WOOD"));
+        addStippableItem(Material.matchMaterial("STRIPPED_MANGROVE_LOG")    , Material.matchMaterial("MANGROVE_LOG"));
+        addStippableItem(Material.matchMaterial("STRIPPED_MANGROVE_WOOD")   , Material.matchMaterial("MANGROVE_WOOD"));
+        addStippableItem(Material.matchMaterial("STRIPPED_OAK_LOG")         , Material.matchMaterial("OAK_LOG"));
+        addStippableItem(Material.matchMaterial("STRIPPED_OAK_WOOD")        , Material.matchMaterial("OAK_WOOD"));
+        addStippableItem(Material.matchMaterial("STRIPPED_SPRUCE_LOG")      , Material.matchMaterial("SPRUCE_LOG"));
+        addStippableItem(Material.matchMaterial("STRIPPED_SPRUCE_WOOD")     , Material.matchMaterial("SPRUCE_WOOD"));
+        addStippableItem(Material.matchMaterial("STRIPPED_WARPED_HYPHAE")   , Material.matchMaterial("WARPED_HYPHAE"));
+        addStippableItem(Material.matchMaterial("STRIPPED_WARPED_STEM")     , Material.matchMaterial("WARPED_STEM"));
+    }
 
+    private void addStippableItem (Material stripableMat, Material originalMat) {
+        if (stripableMat == null || originalMat == null) return;
+
+        strippedBlocks.put(stripableMat, originalMat);
     }
 
     @EventHandler

@@ -88,14 +88,14 @@ public class AutoOpenDoor implements Listener {
         Material type = block.getType();
         if (Material.IRON_DOOR == type) {
             block.getWorld().playSound(block.getLocation(), Sound.BLOCK_IRON_DOOR_OPEN, 1.0f, 1.0f);
-        } else if(Material.BAMBOO_DOOR == type) {
-            block.getWorld().playSound(block.getLocation(), Sound.BLOCK_BAMBOO_WOOD_DOOR_OPEN, 1.0f, 1.0f);
-        } else if(Material.CHERRY_DOOR == type) {
-            block.getWorld().playSound(block.getLocation(), Sound.BLOCK_CHERRY_WOOD_DOOR_OPEN, 1.0f, 1.0f);
-        } else if(Material.WARPED_DOOR == type) {
-            block.getWorld().playSound(block.getLocation(), Sound.BLOCK_NETHER_WOOD_DOOR_OPEN, 1.0f, 1.0f);
-        } else if(Material.CRIMSON_DOOR == type) {
-            block.getWorld().playSound(block.getLocation(), Sound.BLOCK_NETHER_WOOD_DOOR_OPEN, 1.0f, 1.0f);
+//        } else if(Material.BAMBOO_DOOR == type) {
+//            block.getWorld().playSound(block.getLocation(), Sound.BLOCK_BAMBOO_WOOD_DOOR_OPEN, 1.0f, 1.0f);
+//        } else if(Material.CHERRY_DOOR == type) {
+//            block.getWorld().playSound(block.getLocation(), Sound.BLOCK_CHERRY_WOOD_DOOR_OPEN, 1.0f, 1.0f);
+//        } else if(Material.WARPED_DOOR == type) {
+//            block.getWorld().playSound(block.getLocation(), Sound.BLOCK_NETHER_WOOD_DOOR_OPEN, 1.0f, 1.0f);
+//        } else if(Material.CRIMSON_DOOR == type) {
+//            block.getWorld().playSound(block.getLocation(), Sound.BLOCK_NETHER_WOOD_DOOR_OPEN, 1.0f, 1.0f);
         } else {
             block.getWorld().playSound(block.getLocation(), Sound.BLOCK_WOODEN_DOOR_OPEN, 1.0f, 1.0f);
         }

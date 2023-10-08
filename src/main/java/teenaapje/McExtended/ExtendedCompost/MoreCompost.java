@@ -22,29 +22,35 @@ public class MoreCompost implements Listener {
 
     public MoreCompost() {
         // Food
-        compostableItems.put(Material.GOLDEN_APPLE, 100);
-        compostableItems.put(Material.ENCHANTED_GOLDEN_APPLE, 100);
-        compostableItems.put(Material.CHORUS_FRUIT, 65);
-        compostableItems.put(Material.GOLDEN_CARROT, 65);
-        compostableItems.put(Material.POISONOUS_POTATO, 65);
-        compostableItems.put(Material.BEEF, 65);
-        compostableItems.put(Material.COOKED_BEEF, 65);
-        compostableItems.put(Material.PORKCHOP, 65);
-        compostableItems.put(Material.COOKED_PORKCHOP, 65);
-        compostableItems.put(Material.MUTTON, 65);
-        compostableItems.put(Material.COOKED_MUTTON, 65);
-        compostableItems.put(Material.CHICKEN, 65);
-        compostableItems.put(Material.COOKED_CHICKEN, 65);
-        compostableItems.put(Material.RABBIT, 65);
-        compostableItems.put(Material.COOKED_RABBIT, 65);
-        compostableItems.put(Material.COD, 65);
-        compostableItems.put(Material.COOKED_COD, 65);
-        compostableItems.put(Material.SALMON, 65);
-        compostableItems.put(Material.COOKED_SALMON, 65);
-        compostableItems.put(Material.TROPICAL_FISH, 65);
-        compostableItems.put(Material.PUFFERFISH, 65);
-        compostableItems.put(Material.SPIDER_EYE, 65);
-        compostableItems.put(Material.BAMBOO, 65);
+        addCompostableItem(Material.matchMaterial("GOLDEN_APPLE"), 100);
+        addCompostableItem(Material.matchMaterial("ENCHANTED_GOLDEN_APPLE"), 100);
+        addCompostableItem(Material.matchMaterial("CHORUS_FRUIT"), 65);
+        addCompostableItem(Material.matchMaterial("GOLDEN_CARROT"), 65);
+        addCompostableItem(Material.matchMaterial("POISONOUS_POTATO"), 65);
+        addCompostableItem(Material.matchMaterial("BEEF"), 65);
+        addCompostableItem(Material.matchMaterial("COOKED_BEEF"), 65);
+        addCompostableItem(Material.matchMaterial("PORKCHOP"), 65);
+        addCompostableItem(Material.matchMaterial("COOKED_PORKCHOP"), 65);
+        addCompostableItem(Material.matchMaterial("MUTTON"), 65);
+        addCompostableItem(Material.matchMaterial("COOKED_MUTTON"), 65);
+        addCompostableItem(Material.matchMaterial("CHICKEN"), 65);
+        addCompostableItem(Material.matchMaterial("COOKED_CHICKEN"), 65);
+        addCompostableItem(Material.matchMaterial("RABBIT"), 65);
+        addCompostableItem(Material.matchMaterial("COOKED_RABBIT"), 65);
+        addCompostableItem(Material.matchMaterial("COD"), 65);
+        addCompostableItem(Material.matchMaterial("COOKED_COD"), 65);
+        addCompostableItem(Material.matchMaterial("SALMON"), 65);
+        addCompostableItem(Material.matchMaterial("COOKED_SALMON"), 65);
+        addCompostableItem(Material.matchMaterial("TROPICAL_FISH"), 65);
+        addCompostableItem(Material.matchMaterial("PUFFERFISH"), 65);
+        addCompostableItem(Material.matchMaterial("SPIDER_EYE"), 65);
+        addCompostableItem(Material.matchMaterial("BAMBOO"), 65);
+    }
+
+    private void addCompostableItem (Material material, int chance) {
+        if (material == null) return;
+
+        compostableItems.put(material, chance);
     }
 
     @EventHandler
