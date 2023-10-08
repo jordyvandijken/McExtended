@@ -36,28 +36,29 @@ public class ExtendedInventory implements Listener {
     }
 
     private void sortPlayerInventory (Player player) {
-        PlayerInventory inv = player.getInventory();
+        PlayerInventory inventory = player.getInventory();
+        ItemStack[] allContents = inventory.getContents();
 
-        ItemStack[] contents = player.getInventory().getContents();
+        // Create a new array for the main inventory contents.
+        ItemStack[] mainInventoryContents = new ItemStack[27];
 
-        // Remove empty slots and hotbar slots from the array.
-        contents = Arrays.stream(contents)
-                .filter(itemStack -> itemStack != null &&
-                        itemStack.getType() != Material.AIR &&
-                        player.getInventory().first(itemStack) > 8) // Exclude hotbar slots (0 to 8)
-                .toArray(ItemStack[]::new);
+        // Copy the main inventory slots to the new array.
+        System.arraycopy(allContents, 9, mainInventoryContents, 0, 27);
 
         // Sort the array by the order of the material.
-        Arrays.sort(contents, Comparator.comparing(itemStack -> itemStack.getType().ordinal()));
-
-        // Clear the player's main inventory.
-        for (int i = 9; i < 36; i++) {
-            player.getInventory().setItem(i, null);
-        }
+        Arrays.sort(mainInventoryContents, Comparator.comparing(item -> {
+            if (item == null || item.getType() == Material.AIR) {
+                // Treat null or Material.AIR items as larger than any other material.
+                return Integer.MAX_VALUE;
+            } else {
+                // For other materials, return their ordinal.
+                return item.getType().ordinal();
+            }
+        }));
 
         // Add the sorted items back to the main inventory.
-        for (int i = 0; i < contents.length; i++) {
-            player.getInventory().setItem(i + 9, contents[i]);
+        for (int i = 0; i < mainInventoryContents.length; i++) {
+            player.getInventory().setItem(i + 9, mainInventoryContents[i]);
         }
 
         // Update the player's client to reflect the changes.
