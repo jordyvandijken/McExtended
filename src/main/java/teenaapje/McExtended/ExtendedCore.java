@@ -4,6 +4,7 @@ package teenaapje.McExtended;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.plugin.java.JavaPlugin;
 import teenaapje.McExtended.ExtendedDoor.AutoOpenDoor;
+import teenaapje.McExtended.ExtendedElytra.FlySpeed;
 import teenaapje.McExtended.ExtendedFarming.FarmingInteraction;
 import teenaapje.McExtended.ExtendedDispenser.DispenserMiner;
 import teenaapje.McExtended.ExtendedCompost.MoreCompost;
@@ -19,6 +20,7 @@ public final class ExtendedCore extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new AutoOpenDoor(), this);
         getServer().getPluginManager().registerEvents(new ExtendedInventory(), this);
+        getServer().getPluginManager().registerEvents(new FlySpeed(), this);
 
         getServer().getPluginManager().registerEvents(new FarmingInteraction(), this);
         getServer().getPluginManager().registerEvents(new MoreCompost(), this);
@@ -30,15 +32,15 @@ public final class ExtendedCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new DispenserMiner(MaterialLists.Farming.crops, MaterialLists.Tools.hoes)     , this);
 
 
-        getServer().getPluginManager().registerEvents(new BlockDebug(), this);
+        //getServer().getPluginManager().registerEvents(new BlockDebug(), this);
 
         // Register Enchants
-        CustomEnchants.register();
-        getServer().getPluginManager().registerEvents(new CustomEnchantmentListener(CustomEnchants.farmersFeet), this);
+        //CustomEnchants.register();
+        //getServer().getPluginManager().registerEvents(new CustomEnchantmentListener(CustomEnchants.farmersFeet), this);
 
-        for (Enchantment enchantment : Enchantment.values()) {
-            getServer().getLogger().info(enchantment.getName() + " - " + enchantment.isDiscoverable() + " - " + enchantment);
-        }
+        //for (Enchantment enchantment : Enchantment.values()) {
+        //    getServer().getLogger().info(enchantment.getName() + " - " + enchantment.isDiscoverable() + " - " + enchantment);
+        //}
     }
 
     @Override

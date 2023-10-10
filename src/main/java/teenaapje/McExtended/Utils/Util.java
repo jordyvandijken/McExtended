@@ -15,6 +15,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import teenaapje.McExtended.ExtendedCore;
 
 import java.util.Dictionary;
 import java.util.Enumeration;
@@ -182,6 +183,10 @@ public class Util {
             block.setType(material);
             //ExtendedCore.Instance().getLogger().info("replaced - no data set: " + material);
         }
+    }
+
+    public static void log(String message) {
+        ExtendedCore.Instance().getLogger().info(message);
     }
 
 }
