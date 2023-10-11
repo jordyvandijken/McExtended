@@ -1,7 +1,5 @@
 package teenaapje.McExtended;
 
-import io.papermc.paper.enchantments.EnchantmentRarity;
-import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
@@ -9,7 +7,6 @@ import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.EntityCategory;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,27 +33,6 @@ public class FarmersBoots extends Enchantment {
     public boolean canEnchantItem(ItemStack item) {
         // Define which items can be enchanted with your custom enchantment
         return  enchantableItems.contains(item.getType());
-    }
-
-
-    @Override
-    public boolean isDiscoverable() {
-        return true;
-    }
-
-    @Override
-    public @NotNull EnchantmentRarity getRarity() {
-        return EnchantmentRarity.COMMON;
-    }
-
-    @Override
-    public float getDamageIncrease(int i, @NotNull EntityCategory entityCategory) {
-        return 0;
-    }
-
-    @Override
-    public @NotNull Set<EquipmentSlot> getActiveSlots() {
-        return Collections.singleton(EquipmentSlot.FEET);
     }
 
     @Override
@@ -97,18 +73,4 @@ public class FarmersBoots extends Enchantment {
         return echantmentID;
     }
 
-    @Override
-    public @NotNull Component displayName(int level) {
-        return Component.text(echantmentID);
-    }
-
-    @Override
-    public boolean isTradeable() {
-        return false;
-    }
-
-    @Override
-    public @NotNull String translationKey() {
-        return "enchantment.farmers_boots";
-    }
 }

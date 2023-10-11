@@ -9,6 +9,7 @@ import org.bukkit.block.data.type.Door;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.Vector;
@@ -19,7 +20,7 @@ public class AutoOpenDoor implements Listener {
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
-        if (!event.getAction().isRightClick()) return;
+        if (!event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
         if (event.getPlayer().isSneaking()) return; // open single door on sneak
         if (event.getClickedBlock() == null) return;
         if (!isDoor(event.getClickedBlock())) return;
