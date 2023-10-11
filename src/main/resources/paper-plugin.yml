@@ -1,6 +1,0 @@
-name: McExtended
-version: '${project.version}'
-main: teenaapje.McExtended.ExtendedCore
-api-version: '1.13'
-load: STARTUP
-
