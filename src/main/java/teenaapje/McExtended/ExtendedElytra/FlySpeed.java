@@ -2,8 +2,6 @@ package teenaapje.McExtended.ExtendedElytra;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.attribute.Attribute;
-import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
@@ -30,7 +28,8 @@ public class FlySpeed implements Listener {
 
         if (player.isGliding()) {
             double fallDamage = calculateFallDamage(player);
-            double maxFallDamage = maxHeightFallDamage(player);
+            //double maxFallDamage = maxHeightFallDamage(player);
+            double maxFallDamage = player.getHealth();
 
             // Check if the fall damage is fatal (more than 20, as each heart represents 2 health points)
             BarColor barColor = BarColor.GREEN;
@@ -85,8 +84,10 @@ public class FlySpeed implements Listener {
             damageReduction -= reductionFactor;
         }
 
+        // there are still other things that effect fall damage like protection, jump boost, protection, The block it would fall on (but should not be kept in mind)
+
         // Calculate the final fall damage after applying Feather Falling
-        return Math.max(0, (int) ((fallDistance - 3.0) / 2.0 * damageReduction));
+        return Math.max(0, ((fallDistance - 3.0) / 2.0 * damageReduction));
     }
 
     public double maxHeightFallDamage(Player player) {
