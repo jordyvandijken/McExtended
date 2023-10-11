@@ -44,6 +44,7 @@ public class MoreCompost implements Listener {
         addCompostableItem(Material.matchMaterial("TROPICAL_FISH"), 65);
         addCompostableItem(Material.matchMaterial("PUFFERFISH"), 65);
         addCompostableItem(Material.matchMaterial("SPIDER_EYE"), 65);
+        addCompostableItem(Material.matchMaterial("ROTTEN_FLESH"), 65);
         addCompostableItem(Material.matchMaterial("BAMBOO"), 65);
     }
 
