@@ -11,6 +11,7 @@ A plugin to enhance the Minecraft experience while staying faithful to the origi
 - Giving the dispenser the ability to use tools to mine the block in front of them when powered. This allows you to create automated mining machines or traps.
 - Inventory sorting. Double-click to sort the inventory that is clicked
 - Auto open double doors on interaction (shift to open single) 
+- Fly speed meter with fall damage indicator
 
 
 ## Some ideas for future updates:
